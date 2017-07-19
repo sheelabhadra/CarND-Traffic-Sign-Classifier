@@ -89,11 +89,11 @@ Here is an example of a traffic sign image before and after histogram equalizati
 
 ![alt text][image6]
 
-In the last step, I normalized the image data using the formula: (image/255) - 0.5. This step is necessary because normalization helps in making the neural network converge faster since the variation in data is restricted within a specific range (in this case between -0.5 and 0.5). An in-depth discussion on image data pre-processing techniques and their significance is provided in the CS231 [course notes](http://cs231n.github.io/neural-networks-2/).
+In the last step, I normalized the image data using the formula: (image/255) - 0.5. This step is necessary because normalization helps in making the neural network converge faster since the variation in data is restricted within a specific range (in this case between -0.5 and 0.5). An in-depth discussion on image data pre-processing techniques and their significance is provided in Stanford University's CS231n [course notes](http://cs231n.github.io/neural-networks-2/).
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-I used a slightly modified version of the [LeNet-5](http://yann.lecun.com/exdb/lenet/) architecture which is a simple 5 layer Convolutional Neural Network with 2 convolution layers, 2 fully connected layers, and a Softmax layer. The diagram below shows LeNet's architecture.
+I used a slightly modified version of the [LeNet-5](http://yann.lecun.com/exdb/lenet/) architecture which is a simple 5 layer Convolutional Neural Network with 2 convolution layers, 2 fully connected layers, and a Softmax layer. The diagram below shows LeNet-5's architecture.
 
 ![alt text][image13]
 
@@ -158,7 +158,7 @@ There was a lot of overfitting with the initial architecture after feeding the n
 To reduce overfitting, I used 2 dropout layers after the 2 fully connected layers. I also used dropout layers after the max-pooling layers after experimentation since it reduced overfitting further. I experimented with different values for the keep probability and 0.7 seemed to provide the best validation accuracy on my architecture. Due to time constraints, I couldn't experiment with different dropout rates for different layers which would have led to a more finely tuned network.
 
 **Which parameters were tuned? How were they adjusted and why?**  
-I increased the number of epochs because the images were not as simple as handwritten digits with 10 classes. The traffic sign dataset contained 43 classes and the complexity of the images was also higher. To encode the information in this training set into the CNN required more nuber of epochs of training. After 10 epochs the validation set accuracy obtained was 93%, after 20 epochs the validation set accuracy increased to 95%, and after 50 epochs the validation set accuracy increased to 96.2%. This shows that the more number of epochs we train, the better the network learns the training data.
+I increased the number of epochs because the images were not as simple as handwritten digits with 10 classes. The traffic sign dataset contained 43 classes and the complexity of the images was also higher. To encode the information in this training set into the CNN required more nuber of epochs of training. After 10 epochs the validation set accuracy obtained was 93%, after 15 epochs it increased to 95%, and after 50 epochs it increased to 97.3%. This shows that the more number of epochs we train, the better the network learns the training data.
 
 **What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?**  
 Convolution layers are useful if the data contains regional similarity i.e. the arrangement of data points gives us useful insight about the spatial information contained in the daata. Images particularly contain useful spatial information which is an important feature. Convolution layers help in extracting these features.  
@@ -176,7 +176,7 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image11] 
 ![alt text][image12]
 
-In general the images acquired from the web have a higher resolution than the images in the training dataset. These images have a lot of objects apart from just traffic signs. Since, my model does not work on newly seen images, I manually cropped the images so that it only contained the traffic sign. Some of the images collected from the ineternet have watermarks embedded on them which distorts the image and adds unwanted noise to them. Furthermore, my model only accepts inputs with an aspect ratio of 1:1 and of size 32x32. Hence, I resized them in order to fit them into my model which lead to a loss of detail in the images. These are a few issues during data pre-processing.  
+In general the images acquired from the web have a higher resolution than the images in the training dataset. These images have a lot of objects apart from just traffic signs. Since, my model does not work on newly seen images, I manually cropped the images so that it only contained the traffic sign. Some of the images collected from the ineternet have watermarks embedded on them which distorts the image and adds unwanted noise to them. Furthermore, my model only accepts inputs with an aspect ratio of 1:1 and of size 32x32. Hence, I resized them in order to fit them into my model which lead to a loss of detail in the images. These were a few issues that I encountered during data pre-processing.  
 
 The first image should not be difficult for the model to classify because the characteristics (the number "30") of the traffic sign are simple. But, it should also be kept in mind that there a lot of images in the training dataset that belong to the speed-limit class. So, the model might classify it incorrectly failing to distinguish it from other speed limit traffic signs. 
 
@@ -203,7 +203,7 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 4 of these 5 traffic signs, which gives an accuracy of 80%. I actually downloaded 20 images from the internet and got correct prediction on 16 images which gives an overall accuracy of 80%. Although it is far lower than the accuracy on the test set, I feel that the major reason for the lower accuracy than the actual testing accuracy is that the images downloaded from the internet were originally of higher overall quality (resolution) than the training and testing images. On resizing the images to 32x32x3, some important pixels in traffic signs with detail e.g. road work, slippery road, wild animals crossing etc. were lost which might have led to lower accuracty on the internet images.  
 
-But, I was pretty confused as to why sometimes the model was not very certain while identifying speed limit signs. Since, the Le-Net network used was primarily used for digit recognition, I hoped that it would perform very well on speed limit signs which was not the case.
+But, I was pretty confused as to why sometimes the model was not very certain while identifying speed limit signs. Since, the LeNet-5 network used was primarily used for digit recognition, I hoped that it would perform very well on speed limit signs which was not the case.
 
 #### 3 . Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
