@@ -133,7 +133,7 @@ learning rate: 0.001
 mean (for weight initialization): 0  
 stddev (for weight initialization): 0.1  
 
-9#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of 99.4%.
@@ -148,19 +148,19 @@ The following are my model's accuracy and loss curves:
 
 I chose an iterative approach to modify the Le-Net architecture to get the results:  
 
-** What was the first architecture that was tried and why was it chosen?**  
+**What was the first architecture that was tried and why was it chosen?**  
 I chose the [**LeNet-5 architecture**]((http://yann.lecun.com/exdb/lenet/)) as a starting point since it works well on hand-written digits.   
 
-** What were some problems with the initial architecture?**  
+**What were some problems with the initial architecture?**  
 There was a lot of overfitting with the initial architecture after feeding the network with the pre-processed data. The training accuracy was about 98% and the validation set accuracy was about 93%.  
 
-** How was the architecture adjusted and why was it adjusted?**   
+**How was the architecture adjusted and why was it adjusted?**   
 To reduce overfitting, I used 2 dropout layers after the 2 fully connected layers. I also used dropout layers after the max-pooling layers after experimentation since it reduced overfitting further. I experimented with different values for the keep probability and 0.7 seemed to provide the best validation accuracy on my architecture. Due to time constraints, I couldn't experiment with different dropout rates for different layers which would have led to a more finely tuned network.
 
-** Which parameters were tuned? How were they adjusted and why?**  
+**Which parameters were tuned? How were they adjusted and why?**  
 I increased the number of epochs because the images were not as simple as handwritten digits with 10 classes. The traffic sign dataset contained 43 classes and the complexity of the images was also higher. To encode the information in this training set into the CNN required more nuber of epochs of training. After 10 epochs the validation set accuracy obtained was 93%, after 20 epochs the validation set accuracy increased to 95%, and after 50 epochs the validation set accuracy increased to 96.2%. This shows that the more number of epochs we train, the better the network learns the training data.
 
-** What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?**  
+**What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?**  
 Convolution layers are useful if the data contains regional similarity i.e. the arrangement of data points gives us useful insight about the spatial information contained in the daata. Images particularly contain useful spatial information which is an important feature. Convolution layers help in extracting these features.  
 
 Dropout turns off or sets the activation in some of the neurons in a layer to 0 randomly. This helps the network learn only the most important features in the images ignoring very minute details which might be noise and may change from image to image even belonging to the same class. This prevents the network from overfitting to the training data. It increases the accuracy on the validation set and hence the testing set. So, the network performs better on new images.
@@ -284,7 +284,6 @@ The feature maps obtained in convolution layer 2 are
 ![alt text][image22]
 
 It seems that the feature maps of the second convolution layer encode more complex information and other minute details present in the traffic sign. It is difficult to comprehend what exactly the convolution filters are capturing in this layer. 
-
 
 ```python
 
