@@ -66,11 +66,11 @@ Here is an exploratory visualization of the data set. It is a histogram showing 
 
 ![alt text][image1]
 
-We can observe that some classes such as Class 1 and Class 2 have a lot of data samples (about 2000 each) while some classes such as Class 0 and Class 19 have relatively much fewer data samples (about 200 each). This difference in the number of samples in a particular class may lead to the neural network learning more from the data belonging to the class with more number of samples the class than other classes that have relatively lower number of data samples. This makes the network biased towards a few classes during testing.  
+We can observe that some classes such as Class 1 and Class 2 have a lot of data samples (about 2000 each) while some classes such as Class 0 and Class 19 have relatively much fewer data samples (about 200 each). This difference in the number of samples in a particular class may lead to the neural network learning more from the data belonging to the class with more number of samples the class than other classes that have relatively lower number of data samples. This makes the network biased towards a few classes during testing.
 
-Below is a histogram showing how the data is distributed by labels in the validation set.
+We can also observe sample images form all the classes to get some familiarity with the data along with their corresponding labels.
 
-![alt text][image2]
+![alt text][image3]
 
 ### Design and Test a Model Architecture
 
