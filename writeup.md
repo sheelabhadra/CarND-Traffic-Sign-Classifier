@@ -170,8 +170,11 @@ Dropout turns off or sets the activation in some of the neurons in a layer to 0 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 Here are five German traffic signs that I found on the web:
 
-![alt text][image8] ![alt text][image9] ![alt text][image10] 
-![alt text][image11] ![alt text][image12]
+![alt text][image8] 
+![alt text][image9] 
+![alt text][image10] 
+![alt text][image11] 
+![alt text][image12]
 
 In general the images acquired from the web have a higher resolution than the images in the training dataset. These images have a lot of objects apart from just traffic signs. Since, my model does not work on newly seen images, I manually cropped the images so that it only contained the traffic sign. Some of the images collected from the ineternet have watermarks embedded on them which distorts the image and adds unwanted noise to them. Furthermore, my model only accepts inputs with an aspect ratio of 1:1 and of size 32x32. Hence, I resized them in order to fit them into my model which lead to a loss of detail in the images. These are a few issues during data pre-processing.  
 
@@ -181,7 +184,7 @@ The second image might be challenging for the model to classify because it conta
 
 The third image should be difficult for the model to classify because the original image has details such as the deer's antlers and legs which might be lost while down-sampling to 32x32. This might make it look similar to the "Turn left ahead" trafiic sign.
 
-The fourth image should be easy for the model to classify since the characteristics (the "STOP" letters) of the traffic sign is very distinct from other traffic signs.
+The fourth image should be easy for the model to classify since the characteristics (the "STOP" letters) of the traffic sign are very distinct from other traffic signs.
 
 The fifth image might be challenging for the model to classify because it contains details. But, at the same time it is also very different from the rest of the class of images.
 
@@ -276,7 +279,7 @@ The feature maps obtained in convolution layer 1 are
 
 It can be observed that the feature maps of the first convolution layer encode the shape of the traffic sign and the edges of the image details, in this example the edges around the letters.  
 
-The feature maps obtained in convolution layer 1 are
+The feature maps obtained in convolution layer 2 are
 
 ![alt text][image22]
 
